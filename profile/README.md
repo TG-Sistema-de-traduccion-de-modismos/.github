@@ -22,6 +22,11 @@ El sistema permite:
 
 La solución está basada en una arquitectura de microservicios distribuida, con contenedores Docker, un orquestador en Google Cloud, y un API Gateway (Kong) como punto central de acceso.
 
+
+<img width="1258" height="427" alt="HLD comparation drawio (2)" src="https://github.com/user-attachments/assets/0bc76d08-d23d-4ec9-aeb8-3b622d093eda" />
+
+
+
 ### Componentes Principales
 
 | Componente | Tecnología | Descripción |
