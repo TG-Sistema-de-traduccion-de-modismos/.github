@@ -31,7 +31,7 @@ La solución está basada en una arquitectura de microservicios distribuida, con
 
 | Componente | Tecnología | Descripción |
 |-------------|-------------|-------------|
-| **API Gateway** | Kong + JWT + HTTPS | Punto de entrada único. Gestiona autorización con tokens Firebase y redirige las peticiones válidas al orquestador. |
+| **API Gateway** | Kong + HTTPS | Punto de entrada único. Gestiona autorización con tokens Firebase y redirige las peticiones válidas al orquestador. |
 | **Orquestador** | FastAPI + Google Cloud | Coordina los flujos entre los servicios (Whisper, Beto y Phi) dependiendo del tipo de entrada (audio/texto). |
 | **phi-service** | FastAPI + Google Cloud | Servicio intermedio que neutraliza modismos y gestiona la semántica. |
 | **whisper-service** | FastAPI + Google Cloud | Servicio encargado del reconocimiento de voz (Speech-to-Text). |
@@ -52,7 +52,7 @@ Todo el sistema se comunica únicamente a través de HTTPS, garantizando confide
   En los modelos desplegados en la máquina personal se usa Tailscale para la conexión privada y la generación de certificados, junto con Nginx para el enrutamiento hacia los contenedores Docker.  
 
 - **Autenticación y Autorización:**  
-  El API Gateway (Kong) valida los tokens JWT de Firebase. Solo si son válidos, la petición se reenvía al orquestador; de lo contrario, se rechaza el acceso.  
+  El API Gateway (Kong) valida los tokens de Firebase. Solo si son válidos, la petición se reenvía al orquestador; de lo contrario, se rechaza el acceso.  
 
 ---
 
@@ -90,7 +90,7 @@ El flujo es secuencial:
 | Contenedores | Docker |
 | Orquestación | Google Cloud Run / Docker Compose |
 | Gateway | Kong API Gateway |
-| Seguridad | JWT, Firebase Auth, HTTPS, Certbot, Let’s Encrypt |
+| Seguridad | Firebase Auth, HTTPS, Certbot, Let’s Encrypt |
 | Red privada | Tailscale VPN |
 | Proxy inverso | Nginx |
 | Hardware de inferencia | RTX 5070 GPU (local) |
