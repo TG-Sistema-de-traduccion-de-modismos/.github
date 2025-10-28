@@ -58,14 +58,7 @@ Todo el sistema se comunica únicamente a través de HTTPS, garantizando confide
 
 ## Flujo de Procesamiento
 
-### Entrada por Texto
----
-APP Móvil → API Gateway → Orquestador → Beto-Service → Beto-model → Phi-Service → Phi-model → Orquestador → API Gateway -> APP Móvil 
----
-### Entrada por Texto
----
-APP Móvil → API Gateway → Orquestador → Whisper-Service → Whisper-model → Beto-Service → Beto-model → Phi-Service → Phi-model → Orquestador → API Gateway -> APP Móvil 
----
+<img width="3152" height="1672" alt="BPMN - 5" src="https://github.com/user-attachments/assets/63886118-9add-4033-9091-31cf089444c7" />
 
 El flujo es secuencial:  
 - Los audios siempre pasan primero por Whisper antes de llegar a Beto o Phi.  
