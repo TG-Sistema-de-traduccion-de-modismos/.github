@@ -13,7 +13,7 @@ El sistema permite:
 - Recibir entrada de texto o audio desde una aplicación móvil.  
 - Identificar modismos y entregar su significado contextual.  
 - Procesar audio mediante Whisper (speech-to-text).  
-- Analizar texto con Beto y Phi (modelos de PLN).  
+- Analizar texto con Beto y Phi (modelo PLN e instruccional respectivamente).  
 - Integrar todos los servicios bajo un esquema seguro, escalable y modular.  
 
 ---
@@ -41,12 +41,32 @@ La solución está basada en una arquitectura de microservicios distribuida, con
 
 ---
 
+## Modelos de IA Utilizados
+
+El sistema utiliza tres modelos de inteligencia artificial especializados alojados en Hugging Face:
+
+| Modelo | Propósito | Enlace Hugging Face |
+|--------|-----------|---------------------|
+| **Faster Whisper Medium** | Reconocimiento de voz (Speech-to-Text) | [Systran/faster-whisper-medium](https://huggingface.co/Systran/faster-whisper-medium) |
+| **BETO Fine-tuned** | Detección y análisis de modismos bogotanos | [pescobarg/BETO-finetuned-modismos](https://huggingface.co/pescobarg/BETO-finetuned-modismos) |
+| **Phi-3 Mini Instruct** | Neutralización semántica y traducción contextual | [microsoft/Phi-3-mini-4k-instruct](https://huggingface.co/microsoft/Phi-3-mini-4k-instruct) |
+
+### Descripción de los Modelos
+
+- **Faster Whisper Medium**: Versión optimizada del modelo Whisper de OpenAI, convertida al formato CTranslate2 para inferencia rápida. Especializado en transcripción de audio en español.
+
+- **BETO Fine-tuned**: Modelo BERTO (BERT en español) ajustado específicamente para identificar y clasificar modismos y expresiones idiomáticas del español bogotano.
+
+- **Phi-3 Mini Instruct**: Modelo ligero de 3.8B parámetros de Microsoft, entrenado para seguir instrucciones y realizar tareas de procesamiento de lenguaje natural. Se utiliza para neutralizar modismos y proporcionar explicaciones contextuales.
+
+---
+
 ## Seguridad y Comunicación
 
 Todo el sistema se comunica únicamente a través de HTTPS, garantizando confidencialidad e integridad.
 
 - **Certificación en la nube:**  
-  Se utiliza Certbot + Let’s Encrypt + Nginx para generación y renovación automática de certificados, junto con DuckDNS para los dominios dinámicos.  
+  Se utiliza Certbot + Let's Encrypt + Nginx para generación y renovación automática de certificados, junto con DuckDNS para los dominios dinámicos.  
 
 - **Certificación en entorno local:**  
   En los modelos desplegados en la máquina personal se usa Tailscale para la conexión privada y la generación de certificados, junto con Nginx para el enrutamiento hacia los contenedores Docker.  
@@ -83,7 +103,7 @@ El flujo es secuencial:
 | Contenedores | Docker |
 | Orquestación | Docker Compose |
 | Gateway | Kong API Gateway |
-| Seguridad | Firebase Auth, HTTPS, Certbot, Let’s Encrypt |
+| Seguridad | Firebase Auth, HTTPS, Certbot, Let's Encrypt |
 | Red privada | Tailscale VPN |
 | Proxy inverso | Nginx |
 | Hardware de inferencia | RTX 5070 GPU (local) |
@@ -107,5 +127,4 @@ La Universidad Javeriana posee una licencia no exclusiva y perpetua para fines a
 
 Desarrollado por:  
 **Pablo Javier Escobar Gómez, Juan Felipe González Quintero, Gabriel Espitia Romero, Oscar Alejandro Rodríguez Gómez**  
-**Dirección:** Andrea del Pilar Rueda Olarte  
-
+**Dirección:** Andrea del Pilar Rueda Olarte
