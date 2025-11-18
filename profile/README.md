@@ -81,7 +81,7 @@ El flujo es secuencial:
 | Lenguaje base | Python 3.11 |
 | Frameworks | FastAPI, Transformers, Torch |
 | Contenedores | Docker |
-| Orquestación | Google Cloud Run / Docker Compose |
+| Orquestación | Docker Compose |
 | Gateway | Kong API Gateway |
 | Seguridad | Firebase Auth, HTTPS, Certbot, Let’s Encrypt |
 | Red privada | Tailscale VPN |
